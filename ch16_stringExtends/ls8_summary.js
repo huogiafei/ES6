@@ -59,7 +59,7 @@ console.info('\n---------- demo3: toLowerCase,toUpperCase ----------');
 //demo4:es5.4 : indexOf,lastIndexOf
 console.info('\n---------- demo4: indexOf,lastIndexOf ----------');
 {
-    console.log(hello.indexOf('l'));
+    console.log(hello.indexOf('lo'));
     console.log(hello.lastIndexOf('e'));
     console.log(hello.indexOf('k'));
 }
