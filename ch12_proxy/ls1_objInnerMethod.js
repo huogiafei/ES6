@@ -19,7 +19,6 @@ var Obj3 = function(name){
         console.log('100');
     }
     return foo();
-
 }
 
 function show(){
