@@ -1,7 +1,6 @@
 "use strict";
 /**
  * const init
- * @type {*[]}
  */
 const arr = ['a', 'b', 1, 2, 3];
 const obj = {
@@ -20,7 +19,6 @@ console.info('---------- demo1 ----------');
 for (let i = 0, len = arr.length; i < len; i++) {
     //do something
 }
-
 
 /*demo2 : for in*/
 console.info('---------- demo2 ----------');
@@ -55,6 +53,8 @@ for (let item of arr) {
  console.log(item);
  }*/
 
+console.info('----- split -----');
+
 function forOf(arr) {
     for (let item of arr) {
         console.log(item);
@@ -81,6 +81,8 @@ for (var prop in obj) {
 for (var key of Object.keys(obj)) {
     console.log(key + ':' + obj[key]);
 }
+
+
 
 
 

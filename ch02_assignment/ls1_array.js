@@ -1,3 +1,4 @@
+
 //demo1
 console.info('---------- demo1 ----------');
 var a = 1;
@@ -29,7 +30,9 @@ var c = 3;
     //不完全解构
     let [x,y] = [1, 2, 3];
     let [a,[b],c]= [1, [2, 3], 4];
+    console.log(y, b);
 }
+
 //demo2
 console.info('---------- demo2:error ----------');
 {
