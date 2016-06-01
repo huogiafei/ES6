@@ -51,4 +51,17 @@ function containsAllEs6(str,...words){
 }
 console.log(containsAllEs6(title,'he','wo'));
 
+//demo4 other method
+console.info('\n----- demo4 -----');
+String.prototype.isContain = function(...args){
+    for(let item of args){
+        if(!this.includes(item)){
+            return false;
+        }
+    }
+    return true;
+}
+console.log(title.isContain('he', 'wo'));
+
+
 

@@ -2,7 +2,7 @@
 //demo1
 console.info('---------- demo1 ----------');
 let name = 'cookie';
-console.log(`\$Hello World\$,\`${name}\`!`);
+console.log(`\$Hello World\$,\`${name}\`\{dog\}!`);
 
 //demo2
 console.info('---------- demo2 ----------');

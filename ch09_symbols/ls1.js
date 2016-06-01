@@ -36,8 +36,10 @@ man[mySymbol] = '456';
 console.log(typeof mySymbol);
 mySymbol = 'a';
 console.log(man[mySymbol]);
+console.log(Symbol('test') == Symbol('test'));
 
 //demo4:Symbol scope
+console.info('---------- demo4 ----------');
 {
     var dog = {};
     let dogSymbol = Symbol();
@@ -59,5 +61,20 @@ console.info('---------- demo6 ----------');
     console.log(Symbol.for('abc'));
 
     //m3:Symbol.iterator
+}
+
+//demo7: other
+console.info('---------- demo7 ----------');
+{
+    let round = {
+        type:'ellipse',
+        x:10,
+        y:20,
+        [Symbol('isMoving')]:false
+    }
+    console.log(Object.keys(round));
+    console.log(Object.getOwnPropertyNames(round));
+    console.log(Object.getOwnPropertySymbols(round));
+    console.log(Reflect.ownKeys(round));
 
 }

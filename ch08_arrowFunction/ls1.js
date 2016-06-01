@@ -5,7 +5,7 @@
 //demo1 `>=  not =>`
 console.info('---------- demo1 ----------');
 var i = 5;
-while (i-- >= 3) {
+while (i-- >= 2) {
     console.log(i);
 }
 

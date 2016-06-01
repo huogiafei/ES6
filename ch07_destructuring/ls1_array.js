@@ -78,4 +78,6 @@ console.log(getFibs1(0));
 console.log(getFibs2(1));
 console.log(getFibs3(2));
 
-
+//const
+const [PI,M_C] = [Math.PI,'#333'];
+console.log(PI, M_C);

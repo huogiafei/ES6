@@ -35,6 +35,10 @@ function multiVals3(k) { //special method : CPS
 }
 multiVals3((foo, bar) => console.log(foo, bar));
 
+(function(a,b){
+    console.log(a, b);
+})(3,4);
+
 //demo3 : import commonJS module
 /*TODO*/
 

@@ -16,5 +16,6 @@ roundCalc();
 //demo3: do not use `arguments` anymore
 function argsTest(r1=1,...r2){
     console.log(arguments);
+    console.log(r2);
 }
 argsTest(10,20,40);
