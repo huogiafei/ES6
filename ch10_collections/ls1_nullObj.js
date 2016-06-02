@@ -9,6 +9,14 @@ var o1 = Object.create(null);
 var o2 = {};//Object.prototype;
 
 console.log({} == Object.create(Object.prototype));
+
+o2.hasOwnProperty =  () => true;
+//console.log(o1.hasOwnProperty('length'));//Error
+console.log(o2.hasOwnProperty('length'));//true
+console.log(Object.hasOwnProperty(o2, 'length'));//false
+
+//console.log(o1.toString());//error
+console.log(o2.toString());//[object Object]
 /*
  Note that you can't just do object.hasOwnProperty('toString')
  because you may have inserted a key "hasOwnProperty" into object,
