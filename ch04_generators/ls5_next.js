@@ -4,7 +4,7 @@
 //demo1:next args with boolean
 console.info('---------- demo1 ----------');
 function* foo() {
-    for (var i = 0; true; i++) {
+    for(var i = 0;; i++) {
         var reset = yield i;
         if (reset) {
             i = -10;
