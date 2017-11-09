@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+</head>
+<body>
+<div id="container"></div>
+<h1 id="result">Result: <span></span></h1>
+
+<script>
+    let html = ''
+    for (let buttonStr = '', i = 0; i < 3; i++) {
+        buttonStr = `<button>${i}</button>`
+        html += buttonStr;
+    }
+    document.querySelector('#container').innerHTML += html
+
+    //ES 实现方式
+    for (let i = 0; i < 3; i++) {
+        document.querySelectorAll('button')[i].addEventListener('click', function () {
+            document.querySelector('h1 span').innerText = i;
+        })
+    }
+
+    //之前实现方式
+    /*
+        for (var j = 0; j < 3; j++) {
+            (function (k) {
+                document.querySelectorAll('button')[j].addEventListener('click', function () {
+                    document.querySelector('h1 span').innerText = k;
+                },false)
+            }(j))
+        }
+    */
+</script>
+</body>
+</html>

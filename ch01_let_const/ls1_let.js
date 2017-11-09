@@ -7,6 +7,7 @@ var arr = [1, 2, 3];
 for (let i = 0; i < arr.length; i++) {
     console.log(arr[i])
 }
+console.log(i)
 
 //demo2
 console.info('---------- demo2 ----------');
@@ -32,8 +33,8 @@ for (let j = 0; j < arr.length; j++) {
 /** 不存在变量提升 **/
 //demo3
 console.info('---------- demo3 ----------');
-console.log(foo);
-//console.log(bar); //not defined
+console.log(`foo: ${foo}`);
+//console.log(`bar: ${bar}`); //not defined
 var foo = 3;
 let bar = 1;
 
@@ -59,5 +60,5 @@ toon();
 /** 不允许同作用域下声明同一变量**/
 (function fun1() {
     let f = 1;
-    //var f = 2; //Identifier 'f' has already been declared
+    var f = 2; //Identifier 'f' has already been declared
 })();
