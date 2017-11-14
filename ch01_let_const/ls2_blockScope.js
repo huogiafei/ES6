@@ -66,3 +66,18 @@ if (true) {
     }
 }
 f(); // ReferenceError: f is not defined
+
+//demo5 父域和子域
+console.info('\n---------- demo5 ----------')
+for(var p=0;p<3;p++){
+    var p = 'abc'
+    console.log(p)
+}
+console.log(p)
+
+for(let q=0;q<3;q++){
+    let q = 'xyz'
+    console.log(q)
+}
+//console.log(q)
+
