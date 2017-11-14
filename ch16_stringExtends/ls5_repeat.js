@@ -30,24 +30,22 @@ console.log('f3:' + fl3.toString().repeat(NaN));//repeat(0)
 console.info('\n---------- demo3 ----------')
 String.prototype.myRepeat = function (num) {
     var str = this.toString();
-    try {
-        if (isNaN(num) && typeof num !== 'string') return '';
-        else if (typeof num === "string") {
-            throw "(>_<)RangeError: Invalid count value"
-        }
-        else if (num <= 0 || num === NaN) {
-            return ''
-        }
-        else {
-            num = Math.floor(num)
-            for (var i = 0, result = str; i < num - 1; i++) {
-                result += str
-            }
+
+    if (isNaN(num) && typeof num !== 'string') return '';
+    else if (typeof num === "string") {
+        throw new RangeError("(>_<)RangeError: Invalid count value")
+
+    }
+    else if (num <= 0 || num === NaN) {
+        return ''
+    }
+    else {
+        num = Math.floor(num)
+        for (var i = 0, result = str; i < num - 1; i++) {
+            result += str
         }
     }
-    catch (err) {
-        console.log(err)
-    }
+
     return result;
 }
 

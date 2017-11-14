@@ -1,7 +1,8 @@
 'use strict';
-//ES6将全局方法parseInt()和parseFloat()，
-// 移植到Number对象上面，行为完全保持不变。
-//逐步减少全局性方法，使得语言逐步模块化。
+/**ES6将全局方法parseInt()和parseFloat()，
+ *  移植到Number对象上面，行为完全保持不变。
+ *  逐步减少全局性方法，使得语言逐步模块化。
+ */
 
 //es5
 console.info('---------- demo1 ----------');

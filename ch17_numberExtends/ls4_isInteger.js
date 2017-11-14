@@ -66,7 +66,7 @@ function getRange(num){
     return result;
 }
 
-console.log(getRange(Math.pow(2,512)));
+console.log(getRange(Math.pow(2,512)));//1.3407807929942597e+154
 
 
 
