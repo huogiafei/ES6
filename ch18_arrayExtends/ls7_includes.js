@@ -2,17 +2,21 @@
 /** ES7 includes() **/
 
 //demo1
+console.info('\n---------- demo1 ----------')
 console.log([1, 2, 3].includes(2));
 console.log([1, 2, 3].includes(4));
-console.log([1, 2, 3].includes(NaN));
+console.log([1, 2, NaN].includes(NaN));
+console.log([].includes(undefined))
+console.log([].includes(null))
 
-console.log('\n');
+
+console.info('\n---------- demo2 ----------')
 
 console.log([1, 2, 3, 4].includes(3, 3));
-console.log([1, 2, 3, 4].includes(3, 5));
+console.log([1, 2, 3, 4].includes(3, 6)); //fromIndex大于数组长度，返回false
 console.log([1, 2, 3, 4].includes(3, -2));
 
-console.log('\n');
+console.info('\n---------- demo3 ----------')
 
 {
     let arr = [1, 2, 3, 4, 5, 6];
@@ -23,14 +27,14 @@ console.log('\n');
     console.log([NaN].includes(NaN));
 }
 
-console.log('\n');
+console.info('\n---------- demo4 ----------')
 //polyfill
 {
-    const contains = (()=>
-            Array.prototype.includes ?
-                (arr, value) => arr.includes(value)
-                : (arr, value) => arr.some(i => i === value))();
-    console.log(contains(['foo','bar'],'bar'));
+    const contains = (() =>
+        Array.prototype.includes ?
+            (arr, value) => arr.includes(value)
+            : (arr, value) => arr.some(i => i === value))();
+    console.log(contains(['foo', 'bar'], 'bar'));
 }
 
 

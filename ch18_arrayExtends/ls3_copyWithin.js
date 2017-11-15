@@ -3,7 +3,7 @@
 //demo1
 {
     let arr = [2,4,6,8,10,12];
-    arr.copyWithin(0,2);
+    arr.copyWithin(0,2); // default: (0,2,6)
     console.log(arr);
 }
 

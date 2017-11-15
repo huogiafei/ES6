@@ -2,7 +2,7 @@
 /** Array method **/
 
 /*es5 20 methods*/
-// push,op,shift,unshift,
+// push,pop,shift,unshift,
 // map,foreach,filter,some,every
 // indexOf,indexOf
 // splice,slice,concat
@@ -29,7 +29,7 @@ console.info('\n---------- method1:push,pop,shift,unshift ----------');
     console.log(arr);
     arr.shift();
     console.log(arr);
-    arr.unshift(0, 3);
+    arr.unshift(0, 7);
     console.log(arr);
 }
 
@@ -148,7 +148,7 @@ console.info('\n---------- method10: fill ----------');
 {
     let arr = new Array(5).fill(9);
     console.log(arr);
-    console.log(['a', 'b', 'c', 'd'].fill('7', 2, 4));
+    console.log(['a', 'b', 'c', 'd'].fill('7', 2, 10));
 }
 
 /*method11*/
