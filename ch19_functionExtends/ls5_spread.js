@@ -1,5 +1,8 @@
 'use strict';
-/** ES6 function spread **/
+/** ES6 function spread
+ * rest参数和扩展运算符都是 ...
+ *
+ * **/
 console.info('---------- demo1 ----------');
 {
     console.log([1, 2, 3]);
@@ -19,8 +22,7 @@ console.info('---------- demo2 ----------');
 }
 
 console.info('---------- demo3 ----------');
-function f(a, b, c, d) {
-};
+function f(a, b, c, d) {}
 var args = [0, 1];
 f(-1, ...args, ...[3]);
 
@@ -79,6 +81,9 @@ console.info('---------- demo9 ----------');
     var tsArray = [2015,6,7];
     var dateArray = new Date(...tsArray);
     console.log(dateArray);
+
+    console.log([...'hello'])
+    console.log(Array.from('hello'))
 }
 
 console.log('---------- demo10 ----------');
@@ -101,8 +106,9 @@ console.info('---------- demo11 ----------');
         2: 'c',
         length: 3
     }
-    //console.log([...arrObject]);
+    //console.log([...arrObject]);  //arrObject is not iterable
     // arrObject[Symbol.iterator] is not a function
+    console.log(Array.from(arrObject))
 }
 
 console.info('---------- demo12 ----------');

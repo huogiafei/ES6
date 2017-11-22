@@ -51,8 +51,23 @@ f(1,2);
 f(1,undefined,2);
 f(1,null,2);
 
+//demo6
+console.info('\n---------- demo6 ----------')
+function m1({x=0,y=0} = {}) {
+    return [x,y]
+}
 
+function m2({x,y} = {x:0,y:0}) {
+    return [x,y]
+}
 
+function m3(x = 5,y=6) {
+    return [x,y]
+}
+
+console.log(m1('',''))
+console.log(m2('',''))
+console.log(m3(null,undefined))
 
 
 

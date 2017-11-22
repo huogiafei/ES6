@@ -20,10 +20,9 @@ console.info('---------- demo2 ----------');
     var sum = (a, b) => ({id: a + b, num: a - b});
     console.log(sum(2, 3));
 
-    const isEven = n=>n % 2 == 0;
-    const square = n =>n * n;
-    const cube = n =>n * n * n;
-
+    const isEven = n => n % 2 == 0;
+    const square = n => n * n;
+    const cube = n => ( n **= 3);
     console.log(isEven(3), square(3), cube(5));
 }
 
@@ -34,7 +33,6 @@ console.info('---------- demo3 ----------');
     //es5
     let mySort = function (arr) {
         return arr.sort(function (a, b) {
-            console.log(a, b);
             return a - b;
         })
     }
@@ -49,8 +47,77 @@ console.info('---------- demo3 ----------');
 
 //sort warning
 console.info('---------- demo4 ----------');
-    var id = 147;
-    var temp = () => {console.log(this.id)};
-    temp.call({id:'abc'});
-    temp();
+var id = 147;
+var temp = () => {
+    console.log(this.id)
+};
+temp.call({id: 'abc'});
+temp();
+
+//sort  & ...
+console.info('\n---------- demo5 ----------')
+const numbers = (...nums) => nums;
+console.log(numbers(2, 4, 6, 8))
+
+//warning
+console.info('\n---------- demo6 ----------')
+
+function foo() {
+    setTimeout(() => {
+        console.log(`id: ${this.id}`)
+    }, 100)
+}
+
+var id = 123;
+console.log(foo.call({id: 456}))
+
+//this
+console.info('\n---------- demo7 ----------')
+
+function Time() {
+    this.s1 = 0;
+    this.s2 = 0;
+    setTimeout(() => this.s1++, 1000)
+    setTimeout(function () {
+        this.s2++
+    }, 1000)
+}
+
+var timer = new Time
+console.log(`s1: ${timer.s1}`)
+console.log(`s2: ${timer.s2}`)
+setTimeout(() => console.log(`s1: ${timer.s1}`), 3100)
+setTimeout(() => console.log(`s2: ${timer.s2}`), 3100)
+
+console.info('\n---------- demo8 ----------')
+
+function insert1(value) {
+    return {
+        into: function (array) {
+            return {
+                after: function (afterValue) {
+                    array.splice(array.indexOf(afterValue), 0, value);
+                    return array;
+                }
+            }
+        }
+    }
+}
+
+console.log(insert1(4).into([1,2,8,5,6]).after(8));
+
+let insert2 = (value) => ({
+    into: (array) => ({
+        after: (afterValue) => {
+            array.splice(array.indexOf(afterValue), 0, value)
+            return array;
+        }
+    })
+});
+
+
+console.log(insert2(4).into([1,2,8,5,6]).after(8));
+
+
+
 
