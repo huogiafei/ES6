@@ -11,6 +11,7 @@ console.info('---------- demo2 ----------');
 console.log(+0 == -0);
 console.log(+0 === -0);
 console.log(Object.is(+0, -0));
+console.log(Object.is({},{}))
 
 //demo3:polyfill
 Object.defineProperty(Object,'is',{

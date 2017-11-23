@@ -1,11 +1,21 @@
 'use strict';
-/** 6 iter methods**/
+/** 5 iterator methods
+ *  for...in
+ *  Object.keys(obj)
+ *  Object.getOwnPropertySymbols(obj)
+ *  Object.getOwnProperTyNames(obj)
+ *  Reflect.ownKeys(obj)
+ * **/
+
+
+
 const OBJ = {
     a: '1',
     b: '2',
     c: '3',
     [Symbol('c')]: '4',
     [Symbol('d')]: '5',
+    [Symbol()]: '6',
 }
 
 //m1:for...in (no symbol)

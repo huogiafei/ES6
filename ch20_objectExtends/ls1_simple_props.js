@@ -28,12 +28,14 @@ console.log(hello('John', 13));
 //sample3
 
 var dog = {
+    type,
     bark: function(){
         return 'Woo';
     }
 };
 
 var cat = {
+    type,
     miaows() {
         return 'Miao';
     }
