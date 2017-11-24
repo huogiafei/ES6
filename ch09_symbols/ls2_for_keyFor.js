@@ -16,6 +16,9 @@ var boolean = Boolean('true');
 console.log(symbol, num, str, obj, boolean);
 
 //demo2
+/**
+ * Symbol.foo()和Symbol的区别是，前者会记在全局环境以供搜索，后者不会
+ */
 console.info('\n----- demo2 -----');
 {
     let foo = Symbol.for('x');
@@ -27,6 +30,11 @@ console.info('\n----- demo2 -----');
 
     let tmp = Symbol.for('');
     console.log(Symbol.keyFor(tmp));
+
+    let a = Symbol('123')
+    let b = Symbol.for('123')
+    let c = Symbol.for('123')
+    console.log(a === b, b === c)
 }
 
 //demo3
