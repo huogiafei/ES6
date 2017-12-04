@@ -1,4 +1,16 @@
 'use strict';
+
+/**
+ * 和Set属性一样
+ * size()
+ * set(k,v)
+ * get(k)
+ * has(k)
+ * delete(k)
+ * clear()
+ */
+
+
 /** Map Convert **/
 //demo1 map => array
 console.info('\n----- demo1 -----');
