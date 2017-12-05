@@ -1,9 +1,9 @@
 'use strict';
 /** String Iterator **/
 
-console.info('---------- demo1 ----------');
+console.info('\n ---------- demo1 ----------');
 var foo = 'Hello world';
-console.log(typeof  foo[Symbol.iterator]);
+console.log(typeof foo[Symbol.iterator]);
 var iter = foo[Symbol.iterator]();
 
 console.log(iter.next());
@@ -11,7 +11,7 @@ console.log(iter.next());
 console.log(iter.next());
 console.log(iter.next());
 
-
+console.info('\n---------- demo2 ----------')
 //modify str [Symbol iterator]
 //_first
 var bar = new String('abc');
@@ -30,5 +30,5 @@ bar[Symbol.iterator] = function () {
         _first: true
     };
 };
-
 console.log([...bar]);
+

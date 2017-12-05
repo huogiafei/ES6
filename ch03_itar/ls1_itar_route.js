@@ -15,13 +15,13 @@ myMap.set('val', '12390');
 const mySet = (['a', 't', 32]);
 
 /*demo1 : for(var i = ...; i< len ; i++)*/
-console.info('---------- demo1 ----------');
+console.info('\n---------- demo1 ----------');
 for (let i = 0, len = arr.length; i < len; i++) {
     //do something
 }
 
 /*demo2 : for in*/
-console.info('---------- demo2 ----------');
+console.info('\n---------- demo2 ----------');
 for (let item in arr) {
     console.log(item);
 }
@@ -60,11 +60,12 @@ function forOf(arr) {
         console.log(item);
     }
 }
-forOf(str);
 
+forOf(str);
 forOf(myMap);
 console.log(myMap.keys());
-for (var [k,v] of myMap) {
+
+for (var [k, v] of myMap) {
     console.log(`key:${k} ,value:${v}`);
 }
 
@@ -81,6 +82,29 @@ for (var prop in obj) {
 for (var key of Object.keys(obj)) {
     console.log(key + ':' + obj[key]);
 }
+
+console.info('\n---------- My Iterator ----------')
+
+function myIterator(array) {
+    let nextIndex = 0;
+    return {
+        next: function () {
+            return nextIndex < array.length ?
+                {value: array[nextIndex++], done: false} :
+                {value: undefined, done: true}
+        }
+    }
+}
+
+{
+    let arr = [2,4,6];
+    let myIter = myIterator(arr)
+    console.log(myIter.next())
+    console.log(myIter.next())
+    console.log(myIter.next())
+    console.log(myIter.next())
+}
+
 
 
 
