@@ -3,6 +3,7 @@
 
 //demo1:next args with boolean
 console.info('---------- demo1 ----------');
+//next方法带true的时候会把reset重置
 function* foo() {
     for(var i = 0;; i++) {
         var reset = yield i;
