@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <script src="https://unpkg.com/jquery@3.2.1/dist/jquery.js"></script>
+</head>
+<body>
+
+<script>
+    let getJSON = function (url) {
+        return new Promise(function (resolve, reject) {
+            let client = new XMLHttpRequest();
+            client.open('get', url);
+            client.onreadystatechange = handler;
+            client.responseType = "json";
+            client.setRequestHeader('Accept', 'application/json')
+            client.send()
+
+            function handler() {
+                if (this.readyState !== 4) {
+                    return;
+                }
+                if (this.status === 200) {
+                    resolve(this.response)
+                } else {
+                    reject(new Error(this.statusText))
+                }
+            }
+        })
+    }
+
+    console.info('\n---------- Promise.all() ----------')
+    let url1 = 'non-existent.json'
+    let url2 = 'https://api.github.com/users/huogiafei'
+    let url3 = 'https://api.github.com/users/jquery'
+    let p1 = getJSON(url2)
+    let p2 = getJSON(url1)
+    Promise.all([p1, p2]).then(function (res) {
+        console.log('finish')
+    }).catch(function (err) {
+        console.log('err' + err)
+    })
+
+    console.info('\n---------- Promise.race() ----------')
+    let p3 = Promise.race([
+        fetch(url2),
+        new Promise(function (resolve, reject) {
+            setTimeout(function () {
+                reject(new Error('request timeout'))
+            }, 5000)
+        })
+    ])
+
+    p3.then(response => console.log(response))
+        .catch(err => console.log('err', err))
+
+    console.info('\n---------- Promise.resolve() ----------')
+    let jsPromise = Promise.resolve($.ajax('./temp.json'))
+    jsPromise.then(res => console.log(res))
+    //1.参数：promise实例
+    let p_copy = Promise.resolve(p1)
+    console.log(p_copy)
+
+    //2.参数：thenable
+    let thenable = {
+        then: function (resolve, reject) {
+            resolve(42)
+        }
+    }
+
+    let p4 = Promise.resolve(thenable)
+    p4.then(function (val) {
+        console.log(val)
+    })
+
+    //3.参数：不是对象
+    let p = Promise.resolve('foobar')
+    p.then(s => console.log(s))
+
+    //4.不带参数
+    Promise.resolve().then(function () {
+        console.log('world')
+    })
+
+    setTimeout(() => console.log(3))
+    Promise.resolve().then(() => console.log(2))
+    console.log(1)
+
+    console.info('\n---------- Promise.reject() ----------')
+    let p5 = Promise.reject('error')
+    p5.catch((err) => console.log('reject', err))
+
+
+    /** Custom Extension */
+    console.info('\n---------- Promise.done() ----------')
+    Promise.prototype.done = function (onFulfilled, onRejected) {
+        this.then(onFulfilled, onRejected)
+            .catch(function (reason) {
+                setTimeout(() => {
+                    throw  reason
+                }, 0)
+            })
+    }
+
+    let p6 = getJSON(url2);
+    p6.then(response => console.log(response))
+        .catch(err => console.log(err))
+        .then(function () {
+            y = y + 1
+        })
+        .done();
+
+    Promise.prototype.finally = function (callback) {
+        let p = this.constructor;
+        return this.then(
+            value => p.resolve(callback()).then(() => value),
+            reason => p.resolve(callback()).then(() => {
+                throw reason
+            })
+        )
+    }
+
+    /*server.listen(0)
+        .then(function () {
+        // run test
+        })
+        .finally(server.stop);*/
+
+
+</script>
+</body>
+</html>

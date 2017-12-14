@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div id="wrapper"></div>
+
+<script>
+    'use strict';
+    console.info('\n---------- demo1 ----------')
+
+    function timeout(time) {
+        return new Promise((resolve, reject) => {
+            setTimeout(resolve, time, 'done')
+        });
+    }
+
+    timeout(2000).then((val) => {
+        console.log('promise')
+    })
+
+
+    console.info('\n---------- demo2 ----------')
+    {
+        let promise = new Promise(function (resolve, reject) {
+            console.log('promise')
+            resolve()
+        })
+
+        promise.then(function () {
+            console.log('resolve')
+        })
+
+        console.log('go')
+    }
+
+    console.info('\n---------- demo3 ----------')
+
+    //load image
+    function loadImageAsync(url) {
+        return new Promise(function (resolve, reject) {
+            let img = new Image();
+            img.onload = function () {
+                resolve(img)
+            }
+            img.error = function () {
+                reject(new Error("Could not load image at " + url + "."))
+            }
+            img.src = url
+        })
+    }
+
+    {
+        let url = 'https://placehold.it/200x200'
+        let imageLoad = loadImageAsync(url)
+        imageLoad.then(function (res) {
+            console.log('done')
+            console.log(res)
+            let wrap = document.getElementById('wrapper')
+            wrap.appendChild(res)
+        })
+    }
+
+    console.info('\n---------- demo4 ----------')
+    //ajax
+    let getJSON = function (url) {
+        let promise = new Promise(function (resolve, reject) {
+            let client = new XMLHttpRequest();
+            client.open('GET', url);
+            client.onreadystatechange = handler;
+            client.responseType = "json";
+            client.setRequestHeader('Accept', 'application/json');
+            client.send();
+
+            function handler() {
+                if (this.readyState !== 4) {
+                    return;
+                }
+                if (this.status === 200) {
+                    resolve(this.response)
+                } else {
+                    reject(new Error(this.statusText))
+                }
+            }
+        })
+        return promise
+    }
+
+    let url = 'https://api.github.com/users/huogiafei'
+    getJSON(url).then(function (res) {
+        console.log(res)
+    }, function (err) {
+        console.log(err)
+    })
+
+    console.info('\n---------- demo5 ----------')
+    {
+        let p1 = new Promise(function (resolve, reject) {
+            setTimeout(() => reject(new Error('fail')), 3000)
+        })
+
+        let p2 = new Promise(function (resolve, reject) {
+            setTimeout(() => resolve(p1), 1000)
+        })
+
+        p2.then(result => console.log(result))
+            .catch(error => console.log(error))
+    }
+
+    console.info('\n---------- demo6 ----------')
+    //then()
+    getJSON(url).then(res => res['avatar_url'])
+        .then(url => {
+            if (url) {
+                loadImageAsync(url).then(res => {
+                        let wrap = document.getElementById('wrapper')
+                        wrap.appendChild(res)
+                    }, err => console.log('Not found.')
+                )
+            }
+        })
+
+</script>
+</body>
+</html>

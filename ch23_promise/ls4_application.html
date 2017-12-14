@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    const preloadImage = function(path){
+        return new Promise(function (resolve, reject) {
+            let image = new Image();
+            image.onload = () => resolve(image);
+            image.onerror = () =>reject('err');
+            image.src = path;
+        })
+    }
+
+    let imgSrc = 'https://placehold.it/200x200'
+    let load = preloadImage(imgSrc)
+    load.then(function(res){
+        console.log(res)
+        document.body.appendChild(res)
+    }).catch(err => console.log(err))
+
+
+    /* Generator & Promise */
+    function getFoo () {
+        return new Promise(function (resolve, reject){
+            resolve('foo');
+        });
+    }
+    var g = function* () {
+        try {
+            var foo = yield getFoo();
+            console.log(foo);
+        } catch (e) {
+            console.log(e);
+        }
+    };
+    function run (generator) {
+        var it = generator();
+        function go(result) {
+            if (result.done) return result.value;
+            return result.value.then(function (value) {
+                return go(it.next(value));
+            }, function (error) {
+                return go(it.throw(error));
+            });
+        }
+        go(it.next());
+    }
+    run(g);
+    
+</script>
+</body>
+</html>

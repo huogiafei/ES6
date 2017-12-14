@@ -1,0 +1,23 @@
+{
+  "name": "es6",
+  "version": "1.0.0",
+  "description": "ES6 Learning  ============ 学习资料来源：",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-polyfill": "^6.26.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huogiafei/ES6.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/huogiafei/ES6/issues"
+  },
+  "homepage": "https://github.com/huogiafei/ES6#readme"
+}

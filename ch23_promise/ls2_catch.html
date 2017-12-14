@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    'use strict';
+    let getJSON = function (url) {
+        let promise = new Promise(function (resolve, reject) {
+            let client = new XMLHttpRequest();
+            client.open('GET', url);
+            client.onreadystatechange = handler;
+            client.responseType = "json";
+            client.setRequestHeader('Accept', 'application/json');
+            client.send();
+
+            function handler() {
+                if (this.readyState !== 4) {
+                    return;
+                }
+                if (this.status === 200) {
+                    resolve(this.response)
+                } else {
+                    reject(new Error(this.statusText))
+                }
+            }
+        })
+        return promise
+    }
+
+    let url = 'non-existent.json'
+    getJSON(url).then(function (res) {
+        console.log(res)
+    }).catch(function (err) {
+        console.log('err',err)
+    })
+
+    /* bad
+    promise.then(function (res) {
+        //successful
+    },function () {
+        //err
+    })*/
+
+    /* good
+    promise.then(function (res) {
+        //successful
+    }).catch(function () {
+        //err
+    })*/
+
+    console.info('\n---------- no catch ----------')
+    let some = function () {
+        return new Promise(function (resolve, reject) {
+            //Uncaught (in promise) ReferenceError: x is not defined
+            resolve(x+2)
+        })
+    }
+
+    //1. no catch
+    some().then(function(res){
+        console.log('nothing happen')
+    })
+
+    //2. catch first
+    some().catch(function (err) {
+        console.log('err',err)
+    }).then(function (res) {
+        console.log('en')
+    })
+
+    //3.multi catch
+    some().then(function () {
+        console.log('double catch')
+    }).catch(function (err) {
+        console.log('err1',err)
+        y=y+2
+    }).catch(function (err) {
+        console.log('err2',err)
+    })
+    
+
+
+
+</script>
+</body>
+</html>
