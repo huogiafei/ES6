@@ -3,7 +3,12 @@
   "version": "1.0.0",
   "description": "ES6 Learning  ============ 学习资料来源：",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "co": "^4.6.0",
+    "fs-readfile-promise": "^3.0.0",
+    "node-fetch": "^1.7.3",
+    "thunkify": "^2.1.2"
+  },
   "devDependencies": {
     "babel-polyfill": "^6.26.0"
   },
