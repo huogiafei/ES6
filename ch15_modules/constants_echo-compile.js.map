@@ -1,0 +1,1 @@
+{"version":3,"sources":["constants_echo.js"],"names":[],"mappings":";;AAAA;;IAAY,S;;;;AACZ,QAAQ,GAAR,CAAY,UAAU,CAAtB,EAAwB,UAAU,CAAlC","file":"constants_echo-compile.js","sourcesContent":["import * as constants from './constants-compile'\r\nconsole.log(constants.A,constants.B)"]}

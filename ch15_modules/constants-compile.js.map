@@ -1,0 +1,1 @@
+{"version":3,"sources":["constants.js"],"names":[],"mappings":";;;;;AAAO,IAAM,gBAAI,CAAV;AACA,IAAM,gBAAI,CAAV;AACA,IAAM,gBAAI,CAAV","file":"constants-compile.js","sourcesContent":["export const A = 1;\r\nexport const B = 2;\r\nexport const C = 3;"]}
